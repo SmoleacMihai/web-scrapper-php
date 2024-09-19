@@ -1,0 +1,7 @@
+vendor
+prices.json
+composer.phar
+modules.xml
+php.xml
+symfony-scrap.iml
+vcs.xml
