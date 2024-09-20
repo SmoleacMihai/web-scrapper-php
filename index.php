@@ -61,9 +61,6 @@
                     require_once 'utils/sites-config.php';
                     require_once 'utils/save-prices-json.php';
 
-                    $prices_to_json = [];
-
-
                     foreach (returnSitesConfigLenovoLaptops() as $site) {
                         $priceAndSize = scrapeScreenAndPrice($site['url'], $site['price_selector'], $site['screen_selector']);
 
