@@ -1,7 +1,9 @@
 vendor
-prices.json
 composer.phar
 modules.xml
 php.xml
 symfony-scrap.iml
 vcs.xml
+galaxy_a51_prices.json
+lenovo_laptops_prices.json
+prices.json

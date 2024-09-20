@@ -27,18 +27,21 @@
                     require_once 'utils/scrape-price.php';
                     require_once 'utils/print-row.php';
                     require_once 'utils/sites-config.php';
-                    require_once 'utils/save-prices-json.php';
-
-                    $prices_to_json = [];
+                    require_once 'utils/save-array-to-json.php';
 
                     foreach (returnSitesConfigGalaxyA51() as $site) {
                         $price = scrapePrice($site['url'], $site['selector']);
-                        $prices_to_json[$site['name']] = $price;
+                        
+                        $prices_to_json[] = [
+                            'name' => $site['name'],
+                            'price' => $price,
+                            'url' => $site['url']
+                        ];
 
                         echo print_row($site['name'], $price, $site['url']);
                     }
 
-                    savePricesToJson($prices_to_json);
+                    saveArrayToJson($prices_to_json);
                 ?>
                 </tbody>
             </table>
@@ -56,11 +59,6 @@
                 </thead>
                 <tbody>
                 <?php
-                    require_once 'utils/scrape-price.php';
-                    require_once 'utils/print-row.php';
-                    require_once 'utils/sites-config.php';
-                    require_once 'utils/save-prices-json.php';
-
                     foreach (returnSitesConfigLenovoLaptops() as $site) {
                         $priceAndSize = scrapeScreenAndPrice($site['url'], $site['price_selector'], $site['screen_selector']);
 
@@ -75,7 +73,7 @@
                         echo print_row_laptop($site['website'], $priceAndSize[0], $priceAndSize[1],$site['model_name'], $site['url']);
                     }
 
-                    savePricesToJson($laptops_prices_to_json, 'lenovo_laptops_prices.json');
+                    saveArrayToJson($laptops_prices_to_json, 'lenovo_laptops_prices.json');
                 ?>
                 </tbody>
             </table>
