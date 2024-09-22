@@ -68,7 +68,8 @@
                             'model' => $site['model_name'],
                             'screen_size' => $priceAndSize[1],
                             'price' => $priceAndSize[0],
-                            'url' => $site['url']
+                            'url' => $site['url'],
+                            'resolution' => $priceAndSize[2]
                         ];
 
                         echo print_row_laptop($site['website'], $priceAndSize[0], $priceAndSize[1],$site['model_name'], $site['url'], $priceAndSize[2]);
