@@ -31,7 +31,7 @@
 
                     foreach (returnSitesConfigGalaxyA51() as $site) {
                         $price = scrapePrice($site['url'], $site['selector']);
-                        
+
                         $prices_to_json[] = [
                             'name' => $site['name'],
                             'price' => $price,
@@ -54,13 +54,14 @@
                     <th>Website</th>
                     <th>Model Name</th>
                     <th>Screen dimension</th>
+                    <th>Resolution</th>
                     <th>Price</th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php
                     foreach (returnSitesConfigLenovoLaptops() as $site) {
-                        $priceAndSize = scrapeScreenAndPrice($site['url'], $site['price_selector'], $site['screen_selector']);
+                        $priceAndSize = scrapeScreenAndPrice($site['url'], $site['price_selector'], $site['screen_selector'], $site['resolution_selector']);
 
                         $laptops_prices_to_json[] = [
                             'website' => $site['website'],
@@ -70,7 +71,7 @@
                             'url' => $site['url']
                         ];
 
-                        echo print_row_laptop($site['website'], $priceAndSize[0], $priceAndSize[1],$site['model_name'], $site['url']);
+                        echo print_row_laptop($site['website'], $priceAndSize[0], $priceAndSize[1],$site['model_name'], $site['url'], $priceAndSize[2]);
                     }
 
                     saveArrayToJson($laptops_prices_to_json, 'lenovo_laptops_prices.json');
